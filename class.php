@@ -2,7 +2,7 @@
 class Ask{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -30,7 +30,7 @@ class Ask{
 class Attendance{
 
 	//DB connection var
-	public var $db;
+	public $db;
 	
 	//status
 	// {0} - Nghi hoc
@@ -65,10 +65,10 @@ class Attendance{
 
 }
 
-class Class{
+class Classes{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -110,7 +110,7 @@ class Class{
 class Mark{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//type
 	// {1} - Ktra mieng
@@ -154,7 +154,7 @@ class Mark{
 class Notification{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//Status
 	// {0} - Unread
@@ -188,10 +188,10 @@ class Notification{
 	}
 }
 
-class Parent{
+class Parents{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -227,7 +227,7 @@ class Parent{
 class Schedule{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//Day
 	// {2} - Monday
@@ -273,7 +273,7 @@ class Schedule{
 class School{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -300,7 +300,7 @@ class School{
 class Session{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -370,7 +370,7 @@ class Session{
 class Student{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -402,7 +402,7 @@ class Student{
 class Subject{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	public function __construct($conn){
 		$this->db = $conn;
@@ -430,7 +430,7 @@ class Subject{
 class Teacher{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//Type
 	// {1} - GV bo mon
@@ -453,8 +453,8 @@ class Teacher{
 		return $getTeacher;
 	}
 
-	public function getTeacherBySchool($school)
-		$getTeacherBySchool = $this->db->query("SELECT * FROM teacher`` WHERE `school` = '$school'");
+	public function getTeacherBySchool($school){
+		$getTeacherBySchool = $this->db->query("SELECT * FROM `teacher` WHERE `school` = '$school'");
 		return $getTeacherBySchool;
 	}
 
@@ -466,7 +466,7 @@ class Teacher{
 class Term{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//Current
 	// {0} - Not current term
@@ -508,7 +508,7 @@ class Term{
 class Test{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//type
 	// {2} - Ktra 15'
@@ -541,7 +541,7 @@ class Test{
 class User{
 
 	//DB connection var
-	public var $db;
+	public $db;
 
 	//type
 	// {1} - Teacher
@@ -573,7 +573,10 @@ class User{
 	public function checkPassword($username, $password){
 		$user = $this->getUserByUsername($username);
 		$row = $user->fetch_array();
-		($password == $row['password']) ? return true : return false; 
+		if($password == $row['password'])
+			return true;
+		else
+			return false; 
 	}
 
 	public function deleteUser($id){

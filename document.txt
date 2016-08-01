@@ -1,0 +1,5 @@
+list API
+
+Admin
+	- add User: http://piti.vn/api/user/add {username - password(md5)  - type - user(if not admin)}
+	- 
