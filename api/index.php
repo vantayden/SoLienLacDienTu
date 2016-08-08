@@ -313,7 +313,7 @@ Flight::route('POST /mark/edit', function(){
 		if(Flight::checkToken(Flight::request()->data->token)){
 	   		$user = Flight::get('models');
 	   		$user->editMark(Flight::request()->data->id, Flight::request()->data->mark);
-	   		$callback = array('code' => '1', 'message' => 'Mark editted!');
+	   		$callback = array('code' => '1', 'message' => 'Mark edited!');
 		} else
 			$callback = array('code' => '2', 'message' => 'Wrong token access!');
 	    Flight::json($callback);
@@ -681,8 +681,8 @@ Flight::route('POST /student/edit', function(){
 		if(Flight::checkToken(Flight::request()->data->token)){
 			if(Flight::checkPermission(Flight::request()->data->token)){
 		   		$user = Flight::get('models');
-		   		$user->addSchool(Flight::request()->data->id, Flight::request()->data->name, Flight::request()->data->address, Flight::request()->data->class, Flight::request()->data->dad, Flight::request()->data->mom);
-		   		$callback = array('code' => '1', 'message' => 'School added!');
+		   		$user->editStudent(Flight::request()->data->id, Flight::request()->data->name, Flight::request()->data->address, Flight::request()->data->class, Flight::request()->data->dad, Flight::request()->data->mom);
+		   		$callback = array('code' => '1', 'message' => 'Student edited!');
 			} else
 				$callback = array('code' => '2', 'message' => 'Admin permission require!');
 		} else
