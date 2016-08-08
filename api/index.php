@@ -47,22 +47,6 @@ Flight::route('POST /login', function(){
 	}
 });
 
-//Admin Functions
-
-Flight::route('POST /user/add', function(){
-	if(!Flight::checkParams(array('username', 'password', 'type'))){
-		$callback = array('code' => '0', 'message' => 'Error');
-    	Flight::json($callback);
-	} else {
-	    $user = Flight::get('models');
-	    if(Flight::request()->data->type == 3)
-	    	$user->addUser(Flight::request()->data->username, Flight::request()->data->password, Flight::request()->data->type,  0);
-	    else
-	    	$user->addUser(Flight::request()->data->username, Flight::request()->data->password, Flight::request()->data->type,  Flight::request()->data->user);
-	    $callback = array('code' => '1', 'message' => 'User added!');
-	    Flight::json($callback);
-	}
-});
 
 Flight::route('POST /ask/add', function(){
 	if(!Flight::checkParams(array('student', 'content', 'date', 'token'))){
@@ -634,7 +618,7 @@ Flight::route('POST /school/edit', function(){
 });
 
 Flight::route('POST /school/get', function(){
-	if(!Flight::checkParams(array('id', 'name', 'address', 'token'))){
+	if(!Flight::checkParams(array('token'))){
 		$callback = array('code' => '0', 'message' => 'Error');
     	Flight::json($callback);
 	} else {
@@ -661,8 +645,8 @@ Flight::route('POST /school/delete', function(){
 		if(Flight::checkToken(Flight::request()->data->token)){
 			if(Flight::checkPermission(Flight::request()->data->token)){
 		   		$user = Flight::get('models');
-		   		$user->getSchools(Flight::request()->data->id);
-		   		$callback = array('code' => '2', 'message' => 'School deleted!');
+		   		$user->deleteSchool(Flight::request()->data->id);
+		   		$callback = array('code' => '1', 'message' => 'School deleted!');
 			} else
 				$callback = array('code' => '2', 'message' => 'Admin permission require!');
 		} else
@@ -963,5 +947,127 @@ Flight::route('POST /term/delete', function(){
 	}
 });
 
+Flight::route('POST /test/add', function(){
+	if(!Flight::checkParams(array('date', 'class', 'teacher', 'type', 'term', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+	   		$user = Flight::get('models');
+	   		$user->addTest(Flight::request()->data->date, Flight::request()->data->class, Flight::request()->data->teacher, Flight::request()->data->type, Flight::request()->data->term);
+	   		$callback = array('code' => '1', 'message' => 'Test added!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
+Flight::route('POST /test/edit', function(){
+	if(!Flight::checkParams(array('id', 'date', 'class', 'teacher', 'type', 'term', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+	   		$user = Flight::get('models');
+	   		$user->editTest(Flight::request()->data->id, Flight::request()->data->date, Flight::request()->data->class, Flight::request()->data->teacher, Flight::request()->data->type, Flight::request()->data->term);
+	   		$callback = array('code' => '1', 'message' => 'Test edited!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
+Flight::route('POST /test/get', function(){
+	if(!Flight::checkParams(array('id', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+			if(Flight::checkPermission(Flight::request()->data->token)){
+		   		$user = Flight::get('models');
+		   		$test = $user->getTest(Flight::request()->data->id);
+		   		$callback = $test->fetch_array();
+			} else
+				$callback = array('code' => '2', 'message' => 'Admin permission require!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
+Flight::route('POST /test/delete', function(){
+	if(!Flight::checkParams(array('id', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+			if(Flight::checkPermission(Flight::request()->data->token)){
+		   		$user = Flight::get('models');
+		   		$user->deleteTest(Flight::request()->data->id);
+		   		$callback = array('code' => '1', 'message' => 'Test deleted!');
+			} else
+				$callback = array('code' => '2', 'message' => 'Admin permission require!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
+Flight::route('POST /user/add', function(){
+	if(!Flight::checkParams(array('username', 'password', 'type', 'user', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+			if(Flight::checkPermission(Flight::request()->data->token)){
+		   		$user = Flight::get('models');
+			    if(Flight::request()->data->type == 3)
+			    	$user->addUser(Flight::request()->data->username, Flight::request()->data->password, Flight::request()->data->type,  0);
+			    else
+			    	$user->addUser(Flight::request()->data->username, Flight::request()->data->password, Flight::request()->data->type,  Flight::request()->data->user);
+		   		$callback = array('code' => '1', 'message' => 'User added!');
+			} else
+				$callback = array('code' => '2', 'message' => 'Admin permission require!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
+Flight::route('POST /user/changepassword', function(){
+	if(!Flight::checkParams(array('id', 'password', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+			if(Flight::checkPermission(Flight::request()->data->token)){
+		   		$user = Flight::get('models');
+			    $user->editPassword(Flight::request()->data->id, Flight::request()->data->password);
+		   		$callback = array('code' => '1', 'message' => 'Password changed!');
+			} else
+				$callback = array('code' => '2', 'message' => 'Admin permission require!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
+Flight::route('POST /user/delete', function(){
+	if(!Flight::checkParams(array('id', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+			if(Flight::checkPermission(Flight::request()->data->token)){
+		   		$user = Flight::get('models');
+			    $user->deleteUser(Flight::request()->data->id);
+		   		$callback = array('code' => '1', 'message' => 'User deleted!');
+			} else
+				$callback = array('code' => '2', 'message' => 'Admin permission require!');
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
 Flight::start();
 ?>
