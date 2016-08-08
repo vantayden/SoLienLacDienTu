@@ -663,8 +663,8 @@ Flight::route('POST /student/add', function(){
 		if(Flight::checkToken(Flight::request()->data->token)){
 			if(Flight::checkPermission(Flight::request()->data->token)){
 		   		$user = Flight::get('models');
-		   		$user->addSchool(Flight::request()->data->name, Flight::request()->data->address, Flight::request()->data->class, Flight::request()->data->dad, Flight::request()->data->mom);
-		   		$callback = array('code' => '1', 'message' => 'School added!');
+		   		$user->addStudent(Flight::request()->data->name, Flight::request()->data->address, Flight::request()->data->class, Flight::request()->data->dad, Flight::request()->data->mom);
+		   		$callback = array('code' => '1', 'message' => 'Student added!');
 			} else
 				$callback = array('code' => '2', 'message' => 'Admin permission require!');
 		} else
