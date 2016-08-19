@@ -41,7 +41,8 @@ Flight::route('POST /login', function(){
 	    		$callback = array('code' => '0', 'message' => 'Wrong username or password');
 	    	} else {
 	    		$token = $user->addSession(Flight::request()->data->username);
-	    		$callback = array('code' => '1', 'message' => 'Login successful', 'token' => $token);
+	    		$info = $user->getUserByUsername(Flight::request()->data->username); $info = $info->fetch_array();
+	    		$callback = array('code' => '1', 'message' => 'Login successful', 'token' => $token, 'type' => $info['type'], 'id'=>$info['user']);
 	    	}
 	    Flight::json($callback);
 	}
@@ -707,6 +708,37 @@ Flight::route('POST /student/get', function(){
 	}
 });
 
+Flight::route('POST /student/getInfo', function(){
+	if(!Flight::checkParams(array('id', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error');
+    	Flight::json($callback);
+	} else {
+		if(Flight::checkToken(Flight::request()->data->token)){
+	   		$user = Flight::get('models');
+	   		$callback = array();
+			$student = $user->getStudent(Flight::request()->data->id);
+	        $student = $student->fetch_array();
+	        $dad = $user->getParent($student['dad']); $dad = $dad->fetch_array();
+	        $mom = $user->getParent($student['mom']); $mom = $mom->fetch_array();
+	        $class = $user->getClass($student['class']); $class = $class->fetch_array();
+	        $school = $user->getSchool($class['school']); $school = $school->fetch_array();
+	        $schedule = $user->getScheduleByClass($student['class']);
+	        $student['class'] = $class['name'];
+	        $student['school'] = $school['name'];
+	        $mark1 = $user->getMarkByStudent($student['id']); $mark = array(); while($row = $mark1->fetch_assoc()) $mark[] = $row;
+
+	        $callback = array('code' => '2', 'message'=>'Info get success full');
+	        $callback['student'] = $student;
+	        $callback['dad'] = $dad;
+	        $callback['mom'] = $mom;
+	        $callback['schedule'] = $schedule;
+	        $callback['mark'] = $mark;
+		} else
+			$callback = array('code' => '2', 'message' => 'Wrong token access!');
+	    Flight::json($callback);
+	}
+});
+
 Flight::route('POST /student/getbyclass', function(){
 	if(!Flight::checkParams(array('class', 'token'))){
 		$callback = array('code' => '0', 'message' => 'Error');
@@ -1070,4 +1102,5 @@ Flight::route('POST /user/delete', function(){
 	}
 });
 Flight::start();
+$db->mysqli_close();
 ?>

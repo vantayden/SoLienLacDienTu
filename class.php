@@ -10,7 +10,9 @@ class Models{
 
 	//Asks
 
-		public function addAsk($student, $content, $date){
+		public function addAsk($student, $content, $date){			
+			$date = date_create($date);
+			$date = date_format($date, "Y-m-d");
 			$this->db->query("INSERT INTO `ask` (`student`, `content`, `date`) VALUES ('$student', '$content', '$date') ");
 		}
 
@@ -125,12 +127,7 @@ class Models{
 		}
 
 		public function getMarkByStudent($student){
-			$student = $this->getStudent($student);
-			$student = $student->fetch_row();
-			$class = $this->getClass($student['class']);
-			$class = $class->fetch_array();
-			$term = $this->getCurrentTerm($class['school']);
-			$getMark = $this->db->query("SELECT * FROM `mark` WHERE `student` = '$student' AND `term` = '$term' ");
+			$getMark = $this->db->query("SELECT * FROM `mark` WHERE `student` = '$student' ");
 			return $getMark;
 		}
 
@@ -235,8 +232,20 @@ class Models{
 		}
 
 		public function getScheduleByClass($class){
-			$getScheduleByClass = $this->db->query("SELECT * FROM `schedule` WHERE `class` = '$class'");
-			return $getScheduleByClass;
+			$schedule = array();
+			for($i=2; $i<8; $i++){
+				for($j=1; $j<6; $j++){
+					$key = $i.$j;
+					$getTeacher =  $this->db->query("SELECT `teacher` FROM `schedule` WHERE `class` = '$class' AND `day` = '$i' AND `period` = '$j'");
+					if($getTeacher->num_rows == 0)
+						$schedule[$i][$j] = "Trống";
+					else {
+						$getTeacher = $getTeacher->fetch_array();
+						$schedule[$i][$j] = $this->getSubjectByTeacher($getTeacher['teacher']);
+					}
+				}
+			}
+			return $schedule;
 		}
 
 		public function getScheduleByTeacher($teacher){
@@ -263,9 +272,14 @@ class Models{
 			$this->db->query("UPDATE `school` SET `name` = '$name', `address` = '$address' WHERE `id` = '$id' "); 
 		}
 
-		public function getSchools(){
-			$getSchool = $this->db->query("SELECT * FROM `school`");
+		public function getSchool($school){
+			$getSchool = $this->db->query("SELECT * FROM `school` WHERE `id` = '$school' ");
 			return $getSchool;
+		}
+
+		public function getSchools(){
+			$getSchools = $this->db->query("SELECT * FROM `school`");
+			return $getSchools;
 		}
 
 		public function deleteSchool($id){
@@ -375,6 +389,7 @@ class Models{
 			return $getStudentByClass;
 		}
 
+
 		public function deleteStudent($id){
 			$this->db->query("DELETE FROM `student` WHERE `id` = '$id'");
 		}
@@ -386,6 +401,17 @@ class Models{
 
 		public function editSubject($id, $name){
 			$this->db->query("UPDATE `subject` SET `name` = '$name' WHERE `id` = '$id'");
+		}
+
+		public function getNameSubject($subject){
+			$subject = $this->db->query("SELECT `name` FROM `subject` WHERE `id` = '$subject'")->fetch_array();
+			return $subject['name'];
+		}
+
+		public function getSubjectByTeacher($teacher){
+			$getTeacher = $this->getTeacher($teacher)->fetch_array();
+			$subject = $this->db->query("SELECT `name` FROM `subject` WHERE `id` = '".$getTeacher['subject']."'")->fetch_array();
+			return $subject['name'];
 		}
 
 		public function getSubjects(){
@@ -513,6 +539,12 @@ class Models{
 				return true;
 			else
 				return false; 
+		}
+
+		public function getUserType($username){
+			$user = $this->getUserByUsername($username);
+			$user = $user->fetch_array();
+			return $user['type'];
 		}
 
 		public function deleteUser($id){

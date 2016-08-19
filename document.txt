@@ -1,5 +1,4 @@
 list API
 
-Admin
-	- add User: http://piti.vn/api/user/add {username - password(md5)  - type - user(if not admin)}
-	- 
+AIzaSyCUYVYOkk-PL3ytOaedTj7c-JWcvlalYzQ
+900463116431
