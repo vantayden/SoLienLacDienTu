@@ -117,8 +117,8 @@ class Models{
 	// {4} - Ktra giua ky
 	// {5} - Ktra cuoi ky
 
-		public function addMark($teacher, $type, $mark, $student, $date, $test, $term){
-			$this->db->query("INSERT INTO `mark` (`student`, `date`, `type`, `mark`, `teacher`, `test`, `term`) VALUES ('$student', '$date', '$type', '$mark', '$teacher', '$test', '$term') ");
+		public function addMark($teacher, $type, $mark, $student, $date, $test = null){
+			$this->db->query("INSERT INTO `mark` (`student`, `date`, `type`, `mark`, `teacher`, `test`) VALUES ('$student', '$date', '$type', '$mark', '$teacher', '$test') ");
 		}
 
 		public function getMark($id){
@@ -136,6 +136,11 @@ class Models{
 			return $getMark;
 		}
 
+		public function getMarkByStudentAndSubject($student, $subject){
+			$getMark = $this->db->query("SELECT * FROM `mark` WHERE `student` = '$student' AND `teacher` = '$subject'");
+			return $getMark;
+		}
+
 		public function editMark($id, $mark){
 			$this->db->query("UPDATE `mark` SET `mark` = '$mark' WHERE `id` = '$id' ");
 		}
@@ -149,8 +154,8 @@ class Models{
 	// {0} - Unread
 	// {1} - Read
 
-		public function addNotification($date, $content, $status, $teacher, $student){
-			$this->db->query("INSERT INTO `notification` (`date`, `content`, `status`, `teacher`, `student`) VALUES ('$date', '$content', '$status', '$teacher', '$student') ");
+		public function addNotification($content, $status, $teacher, $student){
+			$this->db->query("INSERT INTO `notification` (`content`, `status`, `teacher`, `student`) VALUES ('$content', '$status', '$teacher', '$student') ");
 		}
 
 		public function getNotification($id){
@@ -233,17 +238,47 @@ class Models{
 
 		public function getScheduleByClass($class){
 			$schedule = array();
-			for($i=2; $i<8; $i++){
+			for($i=0; $i<6; $i++){
+				$schedule[$i]['name'] = "Thứ ".($i+2);
+				$sang = "";
+				$chieu = "";
+				$note = "";
+
+				$from = date("Y-m-d", strtotime("sunday previous week"));
+				$to = date("Y-m-d", strtotime("sunday next week"));
+				$test = $this->getTestFromToDate($from, $to, $class);
+
 				for($j=1; $j<6; $j++){
+					$key = $i.$j;
+					$getTeacher =  $this->db->query("SELECT `teacher` FROM `schedule` WHERE `class` = '$class' AND `day` = '".($i+2)."' AND `period` = '$j'");
+					if($getTeacher->num_rows == 0)
+						$sang .= "Trống\n";
+					else {
+						$getTeacher = $getTeacher->fetch_array();
+						$sang .= $this->getSubjectByTeacher($getTeacher['teacher'])."\n";
+					}
+				}
+
+				for($j=6; $j<11; $j++){
 					$key = $i.$j;
 					$getTeacher =  $this->db->query("SELECT `teacher` FROM `schedule` WHERE `class` = '$class' AND `day` = '$i' AND `period` = '$j'");
 					if($getTeacher->num_rows == 0)
-						$schedule[$i][$j] = "Trống";
+						$chieu .= "Trống\n";
 					else {
 						$getTeacher = $getTeacher->fetch_array();
-						$schedule[$i][$j] = $this->getSubjectByTeacher($getTeacher['teacher']);
+						$chieu .= $this->getSubjectByTeacher($getTeacher['teacher'])."\n";
 					}
 				}
+				if($test->num_rows != 0)
+					while($row = $test->fetch_assoc()){
+						if(date_create($row['date'])->format('w') == $i + 1)
+							$note.="Kiểm tra ".$this->getNameSubject($this->getTeacherSubject($row['teacher']))." ngày ".$row['date']."\n";
+					}
+				if($note == '')
+					$note = "Không có";
+				$schedule[$i]['sang'] = $sang;
+				$schedule[$i]['chieu'] = $chieu;
+				$schedule[$i]['note'] = $note;
 			}
 			return $schedule;
 		}
@@ -351,8 +386,8 @@ class Models{
 		}
 
 		public function getSessionUser($token){
-			$getSessionUser = $this->db->query("SELECT * FROM `session` WHERE `token` = '$token'");
-			$row = $getSessionUser->fetch_array();
+			$getSessionUser = $this->db->query("SELECT * FROM `session` WHERE `token` = '$token'")->fetch_array();
+			$row = $this->getUser($getSessionUser['user'])->fetch_array();
 			return $row['user'];
 		}
 
@@ -436,8 +471,13 @@ class Models{
 		}
 
 		public function getTeacher($id){
-			$getTeacher = $this->db->query("SELECT * FROM teacher`` WHERE `id` = '$id'");
+			$getTeacher = $this->db->query("SELECT * FROM `teacher` WHERE `id` = '$id'");
 			return $getTeacher;
+		}
+
+		public function getTeacherSubject($id){
+			$getTeacher = $this->db->query("SELECT * FROM `teacher` WHERE `id` = '$id'")->fetch_array();
+			return $getTeacher['subject'];
 		}
 
 		public function getTeacherBySchool($school){
@@ -491,8 +531,8 @@ class Models{
 	// {4} - Ktra giua ky
 	// {5} - Ktra cuoi ky
 
-		public function addTest($date, $class, $teacher, $type, $term){
-			$this->db->query("INSERT INTO `test` (`date`, `class`, `teacher`, `type`, `term`) VALUES ('$date', '$class', '$teacher', '$type', '$term') ");
+		public function addTest($date, $class, $teacher, $type){
+			$this->db->query("INSERT INTO `test` (`date`, `class`, `teacher`, `type`) VALUES ('$date', '$class', '$teacher', '$type') ");
 		}
 
 		public function editTest($id, $date, $class, $teacher, $type, $term){
@@ -502,6 +542,10 @@ class Models{
 		public function getTest($id){
 			$getTest = $this->db->query("SELECT * FROM `test` WHERE `id` = '$id'");
 			return $getTest;
+		}
+
+		public function getTestFromToDate($from, $to, $class){
+			return $this->db->query("SELECT * FROM `test` WHERE `class` = '$class' AND `date` > '$from' AND `date` < '$to'");
 		}
 
 		public function deleteTest($id){
@@ -534,11 +578,15 @@ class Models{
 
 		public function checkPassword($username, $password){
 			$user = $this->getUserByUsername($username);
-			$row = $user->fetch_array();
-			if($password == $row['password'])
-				return true;
-			else
-				return false; 
+			if($user->num_rows == 0)
+				return false;
+			else {
+				$row = $user->fetch_array();
+				if($password == $row['password'])
+					return true;
+				else
+					return false; 
+			}
 		}
 
 		public function getUserType($username){

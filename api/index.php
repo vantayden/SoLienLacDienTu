@@ -26,6 +26,11 @@ Flight::map('checkToken', function($token){
 	return $user->checkToken($token);
 });
 
+Flight::map('getStudent', function($token){
+	$user = Flight::get('models');
+	return $user->getSessionUser($token);
+});
+
 Flight::map('checkPermission', function($token){
 	$user = Flight::get('models');
 	return $user->sessionIsAdmin($token);
@@ -292,13 +297,13 @@ Flight::route('POST /class/delete', function(){
 });
 
 Flight::route('POST /mark/add', function(){
-	if(!Flight::checkParams(array('teacher', 'type', 'mark', 'student', 'date', 'test', 'term', 'token'))){
-		$callback = array('code' => '0', 'message' => 'Error');
+	if(!Flight::checkParams(array('teacher', 'type', 'mark', 'student', 'date', 'token'))){
+		$callback = array('code' => '0', 'message' => 'Error1');
     	Flight::json($callback);
 	} else {
 		if(Flight::checkToken(Flight::request()->data->token)){
 	   		$user = Flight::get('models');
-	   		$user->addMark(Flight::request()->data->teacher, Flight::request()->data->type, Flight::request()->data->mark, Flight::request()->data->student, Flight::request()->data->date, Flight::request()->data->test, Flight::request()->data->term);
+	   		$user->addMark(Flight::request()->data->teacher, Flight::request()->data->type, Flight::request()->data->mark, Flight::request()->data->student, Flight::request()->data->date, Flight::request()->data->test);
 	   		$callback = array('code' => '1', 'message' => 'Mark added!');
 		} else
 			$callback = array('code' => '2', 'message' => 'Wrong token access!');
@@ -374,13 +379,13 @@ Flight::route('POST /mark/delete', function(){
 });
 
 Flight::route('POST /notification/add', function(){
-	if(!Flight::checkParams(array('date', 'content', 'status', 'teacher', 'student', 'token'))){
+	if(!Flight::checkParams(array('content', 'status', 'teacher', 'student', 'token'))){
 		$callback = array('code' => '0', 'message' => 'Error');
     	Flight::json($callback);
 	} else {
 		if(Flight::checkToken(Flight::request()->data->token)){
 	   		$user = Flight::get('models');
-	   		$user->addNotification(Flight::request()->data->date, Flight::request()->data->content, Flight::request()->data->status, Flight::request()->data->teacher, Flight::request()->data->student);
+	   		$user->addNotification(Flight::request()->data->content, Flight::request()->data->status, Flight::request()->data->teacher, Flight::request()->data->student);
 	   		$callback = array('code' => '1', 'message' => 'Notification added!');
 		} else
 			$callback = array('code' => '2', 'message' => 'Wrong token access!');
@@ -389,16 +394,22 @@ Flight::route('POST /notification/add', function(){
 });
 
 Flight::route('POST /notification/get', function(){
-	if(!Flight::checkParams(array('student', 'token'))){
+	if(!Flight::checkParams(array('token'))){
 		$callback = array('code' => '0', 'message' => 'Error');
     	Flight::json($callback);
 	} else {
 		if(Flight::checkToken(Flight::request()->data->token)){
 	   		$user = Flight::get('models');
 	   		$callback = array();
-			$noti = $user->getNotificationByStudent(Flight::request()->data->student);
+	   		$id = Flight::getStudent(Flight::request()->data->token);
+			$noti = $user->getNotificationByStudent($id);
+			$callback = array('code'=>'2', 'total'=>$noti->num_rows);
+			$i=1;
 	        while($row = $noti->fetch_assoc()){
-	            $callback[] = $row;
+	        	$teacher = $user->getTeacher($row['teacher'])->fetch_array();
+	        	$row['teacher'] = $teacher['name'];
+	            $callback['notification']["$i"] = $row;
+	            $i++;
 	        }
 		} else
 			$callback = array('code' => '2', 'message' => 'Wrong token access!');
@@ -709,23 +720,47 @@ Flight::route('POST /student/get', function(){
 });
 
 Flight::route('POST /student/getInfo', function(){
-	if(!Flight::checkParams(array('id', 'token'))){
+	if(!Flight::checkParams(array('token'))){
 		$callback = array('code' => '0', 'message' => 'Error');
     	Flight::json($callback);
 	} else {
 		if(Flight::checkToken(Flight::request()->data->token)){
 	   		$user = Flight::get('models');
 	   		$callback = array();
-			$student = $user->getStudent(Flight::request()->data->id);
-	        $student = $student->fetch_array();
-	        $dad = $user->getParent($student['dad']); $dad = $dad->fetch_array();
-	        $mom = $user->getParent($student['mom']); $mom = $mom->fetch_array();
-	        $class = $user->getClass($student['class']); $class = $class->fetch_array();
-	        $school = $user->getSchool($class['school']); $school = $school->fetch_array();
+	   		$id = Flight::getStudent(Flight::request()->data->token);
+			$student = $user->getStudent($id)->fetch_array();
+	        $dad = $user->getParent($student['dad'])->fetch_array();
+	        $mom = $user->getParent($student['mom'])->fetch_array();
+	        $class = $user->getClass($student['class'])->fetch_array();
+	        $school = $user->getSchool($class['school'])->fetch_array();
 	        $schedule = $user->getScheduleByClass($student['class']);
 	        $student['class'] = $class['name'];
 	        $student['school'] = $school['name'];
-	        $mark1 = $user->getMarkByStudent($student['id']); $mark = array(); while($row = $mark1->fetch_assoc()) $mark[] = $row;
+	        $mark = array();
+	        $subjects = $user->getSubjects();
+	        $i=0;
+	        while ($subject = $subjects->fetch_assoc()){
+	        	$mos = $user->getMarkByStudentAndSubject($id, $subject['id']);
+	        	$hs1 = "";
+	        	$hs2 = "";
+	        	$hs3 = "";
+	        	if($mos->num_rows > 0)
+	        		while($m = $mos->fetch_assoc()){
+	        			switch ($m['type']){
+	        				case 1:
+	        					$hs1 .= $m['mark']." "; break;
+	        				case 2: 
+	        					$hs2 .= $m['mark']." "; break;
+	        				case 3:
+	        					$hs3 .= $m['mark']." "; break;
+	        			}
+	        		}
+	        	$mark[$i]['name'] = $subject['name'];
+	        	$mark[$i]['hs1'] = $hs1;
+	        	$mark[$i]['hs2'] = $hs2;
+	        	$mark[$i]['hs3'] = $hs3;
+	        	$i++;
+	        }
 
 	        $callback = array('code' => '2', 'message'=>'Info get success full');
 	        $callback['student'] = $student;
@@ -980,13 +1015,13 @@ Flight::route('POST /term/delete', function(){
 });
 
 Flight::route('POST /test/add', function(){
-	if(!Flight::checkParams(array('date', 'class', 'teacher', 'type', 'term', 'token'))){
+	if(!Flight::checkParams(array('date', 'class', 'teacher', 'type', 'token'))){
 		$callback = array('code' => '0', 'message' => 'Error');
     	Flight::json($callback);
 	} else {
 		if(Flight::checkToken(Flight::request()->data->token)){
 	   		$user = Flight::get('models');
-	   		$user->addTest(Flight::request()->data->date, Flight::request()->data->class, Flight::request()->data->teacher, Flight::request()->data->type, Flight::request()->data->term);
+	   		$user->addTest(Flight::request()->data->date, Flight::request()->data->class, Flight::request()->data->teacher, Flight::request()->data->type);
 	   		$callback = array('code' => '1', 'message' => 'Test added!');
 		} else
 			$callback = array('code' => '2', 'message' => 'Wrong token access!');
