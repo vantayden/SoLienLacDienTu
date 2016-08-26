@@ -1,0 +1,12 @@
+<resources>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#E91E63</color>
+    <color name="main1">#74cccd</color>
+    <color name="main2">#73c1ce</color>
+    <color name="main3">#608cb1</color>
+    <color name="main4">#4860ac</color>
+    <color name="main5">#3e307d</color>
+
+    <color name="white">#ffffff</color>
+</resources>

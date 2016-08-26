@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scaleType="centerCrop"
+    android:src="@drawable/background">
+
+    <ImageView
+        android:contentDescription="@string/app_name"
+        android:id="@+id/school_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"/>
+    <ImageView
+        android:contentDescription="@string/app_name"
+        android:layout_height="100dip"
+        android:layout_width="fill_parent"
+        android:src="@drawable/logo_login"
+        android:layout_above="@+id/login_border"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/logo"/>
+    <LinearLayout
+        android:id="@+id/login_border"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:background="@drawable/login_shadow">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username_pad"
+            android:theme="@style/TextLabel">
+            <EditText android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:digits="1234567890"
+                android:hint="@string/login_username"
+                android:textColor="@color/white"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_pad"
+            android:theme="@style/TextLabel">
+            <EditText android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/login_password"
+                android:textColor="@color/white"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/main5"
+            android:background="@drawable/btn_login"
+            android:text="@string/login_button_login"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_sample"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_border"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:background="@drawable/login_shadow"
+        android:weightSum="2">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login_parent_sample"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/main5"
+            android:background="@drawable/btn_login"
+            android:text="Demo phụ huynh"
+            android:layout_weight="1"
+            android:layout_margin="5dp"/>
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login_teacher_sample"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/main5"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_login"
+            android:text="Demo giáo viên"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/copyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/copyright"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

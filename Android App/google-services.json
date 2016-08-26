@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "418657888722",
+    "firebase_url": "https://piti-f6658.firebaseio.com",
+    "project_id": "piti-f6658",
+    "storage_bucket": "piti-f6658.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418657888722:android:20f334c6fe1e6492",
+        "android_client_info": {
+          "package_name": "vn.piti.draku.piti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418657888722-h2t6kj6023a5cfrdrb9j1h589lmjh8k3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.piti.draku.piti",
+            "certificate_hash": "A5658457EBD4FA969387F1DA41447EA1958304D0"
+          }
+        },
+        {
+          "client_id": "418657888722-dh949v6bal90jep24uim7ifgsv93lkko.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv5nNIU8bkAwS7ppX30WkNekqr8xDlbp8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418657888722-dh949v6bal90jep24uim7ifgsv93lkko.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">PiTi</string>
+    <string name="parent_main_notification">Thông báo</string>
+    <string name="parent_main_student">Hồ sơ</string>
+    <string name="parent_main_mark">Kết quả học tập</string>
+    <string name="parent_main_schedule">Thời khóa biểu</string>
+    <string name="parent_main_ask">Xin phép nghỉ học</string>
+
+    <string name="teacher_main_notification">Gửi thông báo</string>
+    <string name="teacher_main_profile">Hồ sơ</string>
+    <string name="teacher_main_mark">Nhập điểm</string>
+    <string name="teacher_main_schedule">Lịch dạy</string>
+    <string name="teacher_main_attendance">Điểm danh</string>
+
+    <string name="slogan">Sổ liên lạc điện tử</string>
+    <string name="login_username">Số điện thoại</string>
+    <string name="login_password">Mật khẩu</string>
+    <string name="login_button_login">Đăng nhập</string>
+    <string name="logout">Đăng xuất</string>
+
+    <string name="copyright">© UET 2016</string>
+
+    <string name="icon_hint">Icon</string>
+    <string name="color_hint">Color</string>
+    <string name="text_hint">Nội dung</string>
+    <string name="text_input_dialog_title">Nội dung thông báo</string>
+    <string name="class_hint">Lớp</string>
+    <string name="student_hint">Học sinh</string>
+    <string name="content_hint">Thông báo</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+</resources>
