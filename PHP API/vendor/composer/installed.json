@@ -43,5 +43,51 @@
         ],
         "description": "Flight is a fast, simple, extensible framework for PHP. Flight enables you to quickly and easily build RESTful web applications.",
         "homepage": "http://flightphp.com"
+    },
+    {
+        "name": "php-gcm/php-gcm",
+        "version": "1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/lkorth/php-gcm.git",
+            "reference": "fdd57ec3f79fd5a7f0936d695a977c27b22ea67a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/lkorth/php-gcm/zipball/fdd57ec3f79fd5a7f0936d695a977c27b22ea67a",
+            "reference": "fdd57ec3f79fd5a7f0936d695a977c27b22ea67a",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3.10"
+        },
+        "time": "2015-05-06 13:25:45",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PHP_GCM": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Luke Korth",
+                "email": "luke@lukekorth.com"
+            }
+        ],
+        "description": "A PHP library for sending GCM messages",
+        "homepage": "https://github.com/lkorth/php-gcm",
+        "keywords": [
+            "android",
+            "gcm",
+            "library",
+            "php"
+        ]
     }
 ]

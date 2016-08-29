@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PiTi</string>
+    <string name="app_name">ParTea</string>
     <string name="parent_main_notification">Thông báo</string>
     <string name="parent_main_student">Hồ sơ</string>
     <string name="parent_main_mark">Kết quả học tập</string>

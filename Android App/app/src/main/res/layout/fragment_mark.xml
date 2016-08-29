@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hint="Điểm"
-            app:itemIcon="@drawable/icon_text"
+            app:itemIcon="@drawable/ic_heso"
             app:itemName="Điểm" />
 
         <pl.coreorb.selectiondialogs.views.SelectedItemView
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hint="Hệ số"
-            app:itemIcon="@drawable/ic_student_black"
+            app:itemIcon="@drawable/icon_text"
             app:itemName="Hệ số điểm" />
 
         <com.balysv.materialripple.MaterialRippleLayout

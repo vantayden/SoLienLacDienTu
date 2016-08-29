@@ -11,9 +11,20 @@ class ComposerStaticInitf60d8b608562b62a0e2878a2e1a00755
         '5b7d984aab5ae919d3362ad9588977eb' => __DIR__ . '/..' . '/mikecao/flight/flight/Flight.php',
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHP_GCM' => 
+            array (
+                0 => __DIR__ . '/..' . '/php-gcm/php-gcm/src',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixesPsr0 = ComposerStaticInitf60d8b608562b62a0e2878a2e1a00755::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

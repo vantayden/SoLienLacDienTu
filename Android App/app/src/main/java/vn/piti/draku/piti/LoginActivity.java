@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.iid.FirebaseInstanceId;
-
 import org.json.JSONObject;
 import vn.piti.draku.piti.DoiTuong.User;
 

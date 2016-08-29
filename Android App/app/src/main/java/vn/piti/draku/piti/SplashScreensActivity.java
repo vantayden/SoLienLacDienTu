@@ -9,7 +9,10 @@ import android.view.Window;
 
 public class SplashScreensActivity extends Activity {
     SessionManager ss;
-
+    @Override
+    public void onBackPressed(){
+        //Do nothing
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ss = new SessionManager(getBaseContext());

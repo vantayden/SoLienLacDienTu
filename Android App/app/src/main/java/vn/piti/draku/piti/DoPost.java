@@ -8,6 +8,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.HttpClient;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class DoPost {
             HttpPost httpPost = new HttpPost(url);
 
             //set json to StringEntity
-            StringEntity se = new StringEntity(data);
+            StringEntity se = new StringEntity(data, HTTP.UTF_8);
 
             //set httpPost Entity
             httpPost.setEntity(se);
