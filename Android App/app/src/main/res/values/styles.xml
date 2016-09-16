@@ -2,31 +2,36 @@
 
     <!-- Default application theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:typeface">serif</item>
         <item name="android:windowAnimationStyle">@null</item>
-	    <item name="colorPrimary">@color/main5</item>
-	    <item name="colorPrimaryDark">@color/main5</item>
+	    <item name="colorPrimary">@color/main2</item>
+	    <item name="colorPrimaryDark">@color/main2</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBarOverlay">false</item>
-        <item name="colorAccent">@color/main5</item>
+        <item name="colorAccent">@color/main2</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="AppTheme">
+        <item name="android:typeface">serif</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:typeface">serif</item>
         <item name="windowActionBar">false</item>
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
     <style name="AppTheme.Title" parent="Theme.AppCompat">
+        <item name="android:typeface">serif</item>
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <!-- Default application theme ends here -->
     <style parent="TextAppearance.AppCompat" name="TextLabel">
+        <item name="android:typeface">serif</item>
 
     <!-- Hint color and label color in FALSE state -->
 
@@ -46,6 +51,7 @@
     </style>
 
     <style parent="TextAppearance.AppCompat" name="TextLabelAsk">
+        <item name="android:typeface">serif</item>
 
         <!-- Hint color and label color in FALSE state -->
 
@@ -64,8 +70,10 @@
 
     </style>
     <style name="AppCompatTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:typeface">serif</item>
         <item name="android:windowActionBar">false</item>
         <item name="colorAccent">@color/main5</item>
     </style>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

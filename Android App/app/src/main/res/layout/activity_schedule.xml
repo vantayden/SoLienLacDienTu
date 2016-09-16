@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/material_grey_100"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ms9_DefaultShadowStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms9_shadowTranslationZ="2dp"
+        app:ms9_shadowElevation="4dp">
+        <RelativeLayout
+            android:id="@+id/actionBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/material_green_400"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAllCaps="true"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/parent_main_schedule"/>
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:mrl_rippleOverlay="true"
+                app:mrl_rippleColor="@android:color/black"
+                app:mrl_rippleRoundedCorners="200dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/la" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </RelativeLayout>
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:background="@drawable/shadow">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@drawable/border_schedule_blank"
+                        android:text="T1"
+                        android:textColor="@color/white"/>
+                    <TextView
+                        android:id="@+id/t2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_schedule_blank"
+                        android:text="T2"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/t3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_schedule_blank"
+                        android:text="T3"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/t4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_schedule_blank"
+                        android:text="T4"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/t5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="T5"
+                        android:background="@drawable/border_schedule_blank"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/t6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="T6"
+                        android:background="@drawable/border_schedule_blank"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/t7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_schedule_blank"
+                        android:text="T7"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:id="@+id/schedule"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" >
+
+
+                    </TableLayout>
+                </ScrollView>
+            </LinearLayout>
+        </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+    </LinearLayout>
+</LinearLayout>

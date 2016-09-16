@@ -47,9 +47,12 @@ public class Attendance {
         try {
             ss = new SessionManager(ct);
             JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("student", this.id);
-            jsonObject.accumulate("status", this.status);
+            JSONObject data = new JSONObject();
+            data.accumulate("student", this.id);
+            data.accumulate("status", this.status);
             jsonObject.accumulate("token", ss.getToken());
+            jsonObject.accumulate("object", "attendance");
+            jsonObject.accumulate("data", data);
             return jsonObject.toString();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());

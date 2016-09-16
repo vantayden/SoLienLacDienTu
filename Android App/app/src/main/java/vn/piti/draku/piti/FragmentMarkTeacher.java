@@ -108,7 +108,7 @@ public class FragmentMarkTeacher extends Fragment implements IconSelectDialog.On
                 if(mark.invalid())
                     Toast.makeText(getContext(), "Vui lòng nhập đủ dữ liệu!", Toast.LENGTH_LONG).show();
                 else {
-                    new HttpAsyncTask().execute(config.TEACHER_ADD_MARK_URL);
+                    new HttpAsyncTask().execute(config.ADD_URL);
                 }
             }
         });
@@ -248,8 +248,8 @@ public class FragmentMarkTeacher extends Fragment implements IconSelectDialog.On
         protected void onPostExecute(String result) {
             try {
                 JSONObject callbackJson = new JSONObject(result);
-                int code = callbackJson.getInt("code");
-                if(code == 0){
+                boolean status = callbackJson.getBoolean("status");
+                if(status == false){
                     Toast.makeText(getContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();

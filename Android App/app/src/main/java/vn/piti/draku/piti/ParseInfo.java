@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class ParseInfo {
     SessionManager ss;
     JSONObject student, JSONinfo, dad, mom, teacher;
-    JSONArray mark, schedule, myClass, attendanceClass;
+    JSONArray mark, schedule, myClass, attendanceClass, new_schedule;
 
     public ParseInfo(Context ct){
         this.ss = new SessionManager(ct);
@@ -23,7 +23,7 @@ public class ParseInfo {
                 this.student = JSONinfo.getJSONObject("student");
                 this.dad = JSONinfo.getJSONObject("dad");
                 this.mom = JSONinfo.getJSONObject("mom");
-                this.mark = JSONinfo.getJSONArray("mark");
+                this.mark = JSONinfo.getJSONArray("marks");
             } else if(ss.getType() == 1){
                 this.teacher = JSONinfo.getJSONObject("teacher");
                 this.myClass = new JSONArray(ss.getMyClass());

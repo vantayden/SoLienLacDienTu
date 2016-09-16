@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -31,7 +32,6 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         progress = new ProgressDialog(this);
         progress.setMessage("Đang đăng nhập...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -100,8 +100,8 @@ public class LoginActivity extends Activity {
             progress.dismiss();
             try {
                 JSONObject callbackJson = new JSONObject(result);
-                int code = callbackJson.getInt("code");
-                if(code == 0){
+                boolean status = callbackJson.getBoolean("status");
+                if(status == false){
                     Toast.makeText(getBaseContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
                 } else {
                     SessionManager ss = new SessionManager(getBaseContext());

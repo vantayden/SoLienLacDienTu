@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scaleType="centerCrop"
-    android:src="@drawable/background">
+    android:src="@drawable/eduback">
 
     <ImageView
         android:contentDescription="@string/app_name"
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background"/>
+        android:src="@drawable/eduback"/>
     <ImageView
         android:contentDescription="@string/app_name"
         android:layout_height="100dip"
@@ -22,12 +22,20 @@
         android:layout_above="@+id/login_border"
         android:layout_gravity="center_vertical"
         android:id="@+id/logo"/>
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ms9_DefaultShadowStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms9_shadowTranslationZ="2dp"
+        app:ms9_shadowElevation="4dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/login_border">
     <LinearLayout
-        android:id="@+id/login_border"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:padding="10dp"
         android:background="@drawable/login_shadow">
@@ -63,17 +71,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColor="@color/main5"
+            android:textColor="@color/main2"
             android:background="@drawable/btn_login"
             android:text="@string/login_button_login"/>
     </LinearLayout>
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
 
-    <LinearLayout
-        android:id="@+id/login_sample"
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ms9_DefaultShadowStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:ms9_shadowTranslationZ="2dp"
+        app:ms9_shadowElevation="4dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/login_sample"
         android:layout_below="@+id/login_border"
-        android:orientation="horizontal"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:padding="10dp"
@@ -84,7 +102,7 @@
             android:id="@+id/btn_login_parent_sample"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/main5"
+            android:textColor="@color/main2"
             android:background="@drawable/btn_login"
             android:text="Demo phụ huynh"
             android:layout_weight="1"
@@ -93,13 +111,13 @@
             android:id="@+id/btn_login_teacher_sample"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textColor="@color/main5"
+            android:textColor="@color/main2"
             android:layout_margin="5dp"
             android:background="@drawable/btn_login"
             android:text="Demo giáo viên"
             android:layout_weight="1"/>
     </LinearLayout>
-
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
     <TextView
         android:id="@+id/copyright"
         android:layout_width="wrap_content"

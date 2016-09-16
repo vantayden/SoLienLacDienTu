@@ -6,6 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ms9_DefaultShadowStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms9_shadowTranslationZ="2dp"
+        app:ms9_shadowElevation="4dp">
     <LinearLayout
         android:id="@+id/boc"
         android:layout_width="match_parent"
@@ -35,6 +43,7 @@
             android:id="@+id/mark_siv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             app:hint="Điểm"
             app:itemIcon="@drawable/ic_heso"
             app:itemName="Điểm" />
@@ -63,4 +72,5 @@
                 android:textStyle="bold"/>
         </com.balysv.materialripple.MaterialRippleLayout>
     </LinearLayout>
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
 </ScrollView>

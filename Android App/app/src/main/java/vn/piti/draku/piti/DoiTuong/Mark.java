@@ -31,10 +31,13 @@ public class Mark {
     public String toJson(){
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("mark", this.mark);
-            jsonObject.accumulate("student", this.student);
-            jsonObject.accumulate("type", this.type);
+            JSONObject data = new JSONObject();
+            data.accumulate("mark", this.mark);
+            data.accumulate("student", this.student);
+            data.accumulate("type", this.type);
             jsonObject.accumulate("token", this.token);
+            jsonObject.accumulate("object", "mark");
+            jsonObject.accumulate("data", data);
             return jsonObject.toString();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());

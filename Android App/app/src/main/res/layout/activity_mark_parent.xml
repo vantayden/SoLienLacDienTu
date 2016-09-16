@@ -12,7 +12,7 @@
             android:id="@+id/actionBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/main3" >
+            android:background="@color/material_red_400" >
 
             <TextView
                 android:id="@+id/title_text"
@@ -25,23 +25,41 @@
                 android:textStyle="bold"
                 android:text="@string/parent_main_mark"/>
 
-            <ImageView
-                android:id="@+id/backButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:src="@drawable/ic_back" />
-        </RelativeLayout>
 
-        <it.neokree.materialtabs.MaterialTabHost
-            android:id="@+id/tabHost"
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:mrl_rippleOverlay="true"
+                app:mrl_rippleColor="@android:color/black"
+                app:mrl_rippleRoundedCorners="200dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/la" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+        </RelativeLayout>
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            app:textColor="@color/white"
-            app:primaryColor="@color/main3"
-            app:accentColor="@color/white" />
+            android:layout_height="wrap_content"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp">
+            <it.neokree.materialtabs.MaterialTabHost
+                android:id="@+id/tabHost"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="2dp"
+                app:textColor="@color/white"
+                app:primaryColor="@color/material_red_400"
+                app:accentColor="@color/white" />
+        </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
@@ -49,10 +67,4 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tabHost" />
     </LinearLayout>
-    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:foregroundGravity="bottom"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -8,11 +8,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/material_grey_100">
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp">
         <RelativeLayout
             android:id="@+id/actionBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/main5" >
+            android:layout_marginBottom="2dp"
+            android:background="@color/material_brown_400" >
 
             <TextView
                 android:id="@+id/title_text"
@@ -24,16 +33,33 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:text="Xin phép nghỉ"/>
-
-            <ImageView
+            <com.balysv.materialripple.MaterialRippleLayout
                 android:id="@+id/backButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:mrl_rippleOverlay="true"
+                app:mrl_rippleColor="@android:color/black"
+                app:mrl_rippleRoundedCorners="200dp"
+                >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="8dp"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/la" />
+            </com.balysv.materialripple.MaterialRippleLayout>
         </RelativeLayout>
+        </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,12 +116,6 @@
             </com.balysv.materialripple.MaterialRippleLayout>
 
         </LinearLayout>
-
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
     </LinearLayout>
-    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:foregroundGravity="bottom"/>
 </android.support.design.widget.CoordinatorLayout>

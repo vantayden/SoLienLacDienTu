@@ -8,7 +8,7 @@ import vn.piti.draku.piti.SessionManager;
 import vn.piti.draku.piti.ParseInfo;
 
 public class Ask{
-    private String student, content, date, token;
+    private String content, date, token;
     SessionManager ss;
     ParseInfo info;
 
@@ -23,9 +23,14 @@ public class Ask{
     public String toJson(){
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("content", this.content);
-            jsonObject.accumulate("date", this.date);
             jsonObject.accumulate("token", this.token);
+            jsonObject.accumulate("object", "ask");
+
+            JSONObject data = new JSONObject();
+            data.accumulate("date", this.date);
+            data.accumulate("content", this.content);
+            jsonObject.accumulate("data", data);
+
             return jsonObject.toString();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());

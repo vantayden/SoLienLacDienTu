@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class FragmentMark extends Fragment {
@@ -80,7 +79,7 @@ public class FragmentMark extends Fragment {
 
         hs1_diem = new TextView(ct);
         hs1_diem.setText(hs1);
-        hs1_diem.setTextColor(getResources().getColor(R.color.material_red_500));
+        hs1_diem.setTextColor(getResources().getColor(R.color.material_red_400));
         hs1_diem.setGravity(Gravity.CENTER);
 
         hs2_title = new TextView(ct);
@@ -90,7 +89,7 @@ public class FragmentMark extends Fragment {
 
         hs2_diem = new TextView(ct);
         hs2_diem.setText(hs2);
-        hs2_diem.setTextColor(getResources().getColor(R.color.material_red_500));
+        hs2_diem.setTextColor(getResources().getColor(R.color.material_red_400));
         hs2_diem.setGravity(Gravity.CENTER);
 
         hs3_title = new TextView(ct);
@@ -100,7 +99,7 @@ public class FragmentMark extends Fragment {
 
         hs3_diem = new TextView(ct);
         hs3_diem.setText(hs3);
-        hs3_diem.setTextColor(getResources().getColor(R.color.material_red_500));
+        hs3_diem.setTextColor(getResources().getColor(R.color.material_red_400));
         hs3_diem.setGravity(Gravity.CENTER);
     }
 

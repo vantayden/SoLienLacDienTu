@@ -5,11 +5,18 @@
     tools:showIn="@layout/activity_attendance_teacher"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp">
         <LinearLayout
         android:id="@+id/boc"
         android:layout_width="match_parent"
@@ -26,7 +33,15 @@
                 app:itemIcon="@drawable/ic_class"
                 app:itemName="Lớp" />
         </LinearLayout>
-
+        </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp">
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="275dp"
@@ -37,6 +52,17 @@
             android:clickable="false"
             android:visibility="invisible">
         </ListView>
+        </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+        <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/ms9_DefaultShadowStyle"
+            android:id="@+id/btnSend_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ms9_shadowTranslationZ="2dp"
+            app:ms9_shadowElevation="4dp"
+            android:visibility="invisible">
         <com.balysv.materialripple.MaterialRippleLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -50,9 +76,8 @@
                 android:text="Gửi"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_ask"
-                android:textStyle="bold"
-                android:visibility="invisible"/>
+                android:textStyle="bold"/>
         </com.balysv.materialripple.MaterialRippleLayout>
+        </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
     </LinearLayout>
-
 </ScrollView>

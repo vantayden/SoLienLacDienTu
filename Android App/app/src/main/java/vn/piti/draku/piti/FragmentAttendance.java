@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,6 +31,7 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
     AppConfig config;
     View rootView;
     Button btnSend;
+    MaterialShadowContainerView shadow;
     ListView lv;
     JSONArray myClass;
 
@@ -56,7 +59,7 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new HttpAsyncTask().execute(config.TEACHER_ADD_ATTENDANCE_URL);
+                new HttpAsyncTask().execute(config.ADD_URL);
             }
         });
         return rootView;
@@ -162,7 +165,8 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
             }
             lv = (ListView) rootView.findViewById(R.id.listStudent);
             lv.setVisibility(View.VISIBLE);
-            btnSend.setVisibility(View.VISIBLE);
+            shadow = (MaterialShadowContainerView) rootView.findViewById(R.id.btnSend_shadow);
+            shadow.setVisibility(View.VISIBLE);
             lv.setAdapter(new CustomAttendanceListAdapter(getContext(), listStudent));
 
         }  catch (Exception e) {

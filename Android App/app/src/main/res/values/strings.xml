@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">ParTea</string>
     <string name="parent_main_notification">Thông báo</string>
-    <string name="parent_main_student">Hồ sơ</string>
+    <string name="parent_main_student">Thông tin học sinh</string>
     <string name="parent_main_mark">Kết quả học tập</string>
     <string name="parent_main_schedule">Thời khóa biểu</string>
-    <string name="parent_main_ask">Xin phép nghỉ học</string>
+    <string name="parent_main_ask">Xin phép nghỉ</string>
 
     <string name="teacher_main_notification">Gửi thông báo</string>
-    <string name="teacher_main_profile">Hồ sơ</string>
+    <string name="teacher_main_profile">Thông tin giáo viên</string>
     <string name="teacher_main_mark">Nhập điểm</string>
     <string name="teacher_main_schedule">Lịch dạy</string>
     <string name="teacher_main_attendance">Điểm danh</string>
@@ -28,4 +28,7 @@
     <string name="student_hint">Học sinh</string>
     <string name="content_hint">Thông báo</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string-array name="teacher_array">
+        <item>Xem thông tin giáo viên</item>
+    </string-array>
 </resources>

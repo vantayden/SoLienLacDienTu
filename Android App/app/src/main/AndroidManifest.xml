@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.piti.draku.piti">
-    <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreensActivity"
-
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +25,8 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".MainParentActivity"/>
+        <activity android:name=".MainParentActivity2"/>
+        <activity android:name=".MainParentActivity3"/>
         <activity android:name=".ParentNotificationActivity"/>
         <activity android:name=".ParentStudentActivity"/>
         <activity android:name=".ParentMarkActivity"/>
@@ -32,6 +34,8 @@
         <activity android:name=".ParentAskActivity"/>
 
         <activity android:name=".MainTeacherActivity"/>
+        <activity android:name=".MainTeacherActivity2"/>
+        <activity android:name=".MainTeacherActivity3"/>
         <activity android:name=".TeacherProfileActivity"/>
         <activity android:name=".TeacherScheduleActivity"/>
         <activity android:name=".TeacherNotificationActivity"/>

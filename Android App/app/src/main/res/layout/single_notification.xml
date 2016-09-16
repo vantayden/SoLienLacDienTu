@@ -2,45 +2,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:background="@color/material_grey_100">
-    <RelativeLayout
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ms9_DefaultShadowStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shadow"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:id="@+id/content"
-            android:layout_width="wrap_content"
+        app:ms9_shadowTranslationZ="2dp"
+        app:ms9_shadowElevation="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/main1"
-            android:typeface="sans"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"/>
+            android:background="@drawable/shadow"
+            android:layout_margin="5dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/teacher_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/teacher"/>
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/main2"
+                android:layout_toRightOf="@+id/teacher_image"
+                android:typeface="serif"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Content"/>
 
-        <TextView
-            android:id="@+id/teacher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/content"
-            android:layout_marginTop="5dip"
-            android:textColor="#343434"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="5dp"/>
+            <TextView
+                android:id="@+id/teacher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/teacher_image"
+                android:layout_below="@id/content"
+                android:textColor="@color/material_grey_700"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Teacher"/>
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/teacher"
-            android:layout_alignBottom="@+id/content"
-            android:layout_alignParentRight="true"
-            android:textColor="#343434"
-            android:textSize="12sp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"/>
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/material_grey_500"
+                android:textSize="12sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="time"/>
+        </RelativeLayout>
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
 </LinearLayout>

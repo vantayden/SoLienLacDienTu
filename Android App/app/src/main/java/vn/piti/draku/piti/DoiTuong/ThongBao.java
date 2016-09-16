@@ -27,9 +27,12 @@ public class ThongBao{
     public String toJson(){
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.accumulate("content", this.content);
-            jsonObject.accumulate("student", this.student);
+            JSONObject data = new JSONObject();
+            data.accumulate("content", this.content);
+            data.accumulate("student", this.student);
             jsonObject.accumulate("token", this.token);
+            jsonObject.accumulate("object", "notification");
+            jsonObject.accumulate("data", data);
             return jsonObject.toString();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());

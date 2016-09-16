@@ -19,7 +19,6 @@ public class SplashScreensActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash_screen);
-
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Intent goToNextActivity;
