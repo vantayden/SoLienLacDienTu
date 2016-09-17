@@ -90,10 +90,15 @@ public class ParentScheduleActivity extends Activity {
         TextView column;
 
         TableLayout.LayoutParams row_layout = new TableLayout.LayoutParams(
-                TableLayout.LayoutParams.WRAP_CONTENT, 55*oneDP, 1f);
+                TableLayout.LayoutParams.WRAP_CONTENT, 72*oneDP, 1f);
+
+        TableLayout.LayoutParams row_layout2 = new TableLayout.LayoutParams(
+                TableLayout.LayoutParams.WRAP_CONTENT, 48*oneDP, 1f);
 
         TableRow.LayoutParams column_layout = new TableRow.LayoutParams(
-                0, 55*oneDP, 1f);
+                0, 72*oneDP, 1f);
+        TableRow.LayoutParams column_layout2 = new TableRow.LayoutParams(
+                0, 48*oneDP, 1f);
 
         for(int i=0; i<10; i++){
             row = new TableRow(getBaseContext());
@@ -102,15 +107,15 @@ public class ParentScheduleActivity extends Activity {
                 column.setText("Sáng");
                 column.setTextColor(getResources().getColor(R.color.material_grey_700));
                 column.setGravity(Gravity.CENTER);
-                row.addView(column, column_layout);
-                schedule.addView(row, row_layout);
+                row.addView(column, column_layout2);
+                schedule.addView(row, row_layout2);
             } else if(i == 5){
                 column = new TextView(getBaseContext());
                 column.setText("Chiều");
                 column.setTextColor(getResources().getColor(R.color.material_grey_700));
                 column.setGravity(Gravity.CENTER);
-                row.addView(column, column_layout);
-                schedule.addView(row, row_layout);
+                row.addView(column, column_layout2);
+                schedule.addView(row, row_layout2);
             }
 
             row = new TableRow(getBaseContext());

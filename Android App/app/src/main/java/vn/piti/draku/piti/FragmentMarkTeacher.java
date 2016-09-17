@@ -11,8 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -38,7 +38,6 @@ public class FragmentMarkTeacher extends Fragment implements IconSelectDialog.On
     private SelectedItemView studentSIV;
     private SelectedItemView typeSIV;
     private SelectedItemView markSIV;
-    Button btnSend;
     Mark mark;
     AppConfig config;
     private JSONArray myClass;
@@ -101,8 +100,15 @@ public class FragmentMarkTeacher extends Fragment implements IconSelectDialog.On
             }
         });
 
-        btnSend = (Button) rootView.findViewById(R.id.btnSend);
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        rootView.findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMainActivity = new Intent(getContext(), MainTeacherActivity3.class);
+                startActivity(goToMainActivity);
+            }
+        });
+
+        rootView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mark.invalid())
@@ -178,13 +184,24 @@ public class FragmentMarkTeacher extends Fragment implements IconSelectDialog.On
         final EditText textET = new EditText(getContext());
         textET.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_NUMBER_FLAG_SIGNED);
 
+        float scale = getResources().getDisplayMetrics().density;
+        int oneDP = (int) (scale + 0.5f);
+        LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        llp.setMargins(8*oneDP, 0, 8*oneDP, 0); // llp.setMargins(left, top, right, bottom);
+        textET.setLayoutParams(llp);
+
         new AlertDialog.Builder(getContext())
                 .setTitle("Nhập điểm...")
                 .setView(textET)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        markSIV.setSelectedName(textET.getText().toString());
-                        mark.setMark(textET.getText().toString());
+                        if(Float.parseFloat(textET.getText().toString()) < 0 || Float.parseFloat(textET.getText().toString()) > 10) {
+                            Toast.makeText(getContext(), "Vui lòng nhập đúng điểm!", Toast.LENGTH_LONG).show();
+                            showTextInputDialog();
+                        } else {
+                            markSIV.setSelectedName(textET.getText().toString());
+                            mark.setMark(textET.getText().toString());
+                        }
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -253,7 +270,7 @@ public class FragmentMarkTeacher extends Fragment implements IconSelectDialog.On
                     Toast.makeText(getContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
-                    Intent goToNextActivity = new Intent(getContext(), MainTeacherActivity.class);
+                    Intent goToNextActivity = new Intent(getContext(), MainTeacherActivity3.class);
                     startActivity(goToNextActivity);
                 }
             } catch (Exception e) {

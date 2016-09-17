@@ -5,7 +5,6 @@
     android:background="@color/material_grey_100"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,40 +13,62 @@
         android:layout_height="wrap_content"
         app:ms9_shadowTranslationZ="2dp"
         app:ms9_shadowElevation="4dp">
-    <RelativeLayout
-        android:id="@+id/actionBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/material_teal_500"
-        android:layout_marginBottom="4dp">
+        <RelativeLayout
+            android:id="@+id/actionBar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/material_teal_500" >
 
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textAllCaps="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="@string/parent_main_student"/>
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="72dp"
+                android:layout_marginBottom="16dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/parent_main_student"/>
 
-        <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/backButton"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            app:mrl_rippleOverlay="true"
-            app:mrl_rippleColor="@android:color/black"
-            app:mrl_rippleRoundedCorners="200dp">
-            <ImageView
-                android:layout_width="match_parent"
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/backButton"
+                android:layout_width="52dp"
+                android:layout_margin="2dp"
                 android:layout_height="match_parent"
-                android:padding="15dp"
+                app:mrl_rippleOverlay="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/la" />
-        </com.balysv.materialripple.MaterialRippleLayout>
-    </RelativeLayout>
+                app:mrl_rippleColor="@color/material_grey_500"
+                app:mrl_rippleRoundedCorners="200dp"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="14dp"
+                    android:src="@drawable/la" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/logoutButton"
+                android:layout_width="52dp"
+                android:layout_margin="2dp"
+                android:padding="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_height="match_parent"
+                app:mrl_rippleOverlay="true"
+                app:mrl_rippleColor="@color/material_grey_500"
+                app:mrl_rippleRoundedCorners="200dp"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/logout" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </RelativeLayout>
     </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
     <ScrollView
         android:layout_width="match_parent"
@@ -55,285 +76,208 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        style="@style/ms9_DefaultShadowStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ms9_shadowTranslationZ="2dp"
-        app:ms9_shadowElevation="4dp">
+        android:orientation="vertical"
+        android:background="@color/material_grey_100">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/student_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="16dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/student"/>
+        <TextView
+            android:id="@+id/student_name"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="student name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/material_grey_700"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shadow"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="10dp">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/student_image"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:padding="10dp"
-                android:layout_alignParentLeft="true"
-                android:src="@drawable/student"/>
-            <TextView
-                android:id="@+id/student_name"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:text="student name"
-                android:textSize="20dp"
-                android:layout_marginBottom="10dp"/>
-            <include layout="@layout/item_divider" />
+            android:background="@drawable/shadow">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:layout_height="72dp"
+                android:clickable="true">
 
                 <ImageView
                     android:id="@+id/ivContactItem1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:src="@drawable/info_school" />
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="2dp"
+                    android:padding="16dp"
+                    android:src="@drawable/info_school"/>
 
                 <TextView
                     android:id="@+id/class_school"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:layout_toRightOf="@id/ivContactItem1"
                     android:text="class - School"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/main2"
-                    android:layout_centerInParent="true"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="8dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/material_grey_700"/>
             </RelativeLayout>
-            <include layout="@layout/item_divider" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/material_grey_200"
+                android:layout_marginLeft="72dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:layout_height="72dp">
 
                 <ImageView
                     android:id="@+id/ivContactItem2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="2dp"
+                    android:padding="16dp"
                     android:src="@drawable/info_address" />
 
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_toEndOf="@id/ivContactItem2"
                     android:layout_toRightOf="@id/ivContactItem2"
                     android:text="address"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/main2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="8dp"
+                    android:textColor="@color/material_grey_700"
                     android:layout_centerInParent="true"/>
 
             </RelativeLayout>
-        </LinearLayout>
-    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
 
-    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        style="@style/ms9_DefaultShadowStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ms9_shadowTranslationZ="2dp"
-        app:ms9_shadowElevation="4dp">
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shadow"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_height="2dp"
+            android:background="@color/material_grey_200"
+            android:layout_marginLeft="72dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:layout_height="72dp">
 
                 <ImageView
                     android:id="@+id/ivContactItem3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="2dp"
+                    android:padding="16dp"
                     android:src="@drawable/info_dad" />
 
                 <TextView
                     android:id="@+id/dadname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_toEndOf="@id/ivContactItem3"
                     android:layout_toRightOf="@id/ivContactItem3"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:text="dad"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/main2"
-                    android:layout_centerInParent="true"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/material_grey_700"/>
 
             </RelativeLayout>
-            <include layout="@layout/item_divider" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/material_grey_200"
+            android:layout_marginLeft="72dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:layout_height="72dp">
 
                 <ImageView
                     android:id="@+id/ivContactItem4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="2dp"
+                    android:padding="16dp"
                     android:src="@drawable/info_phone" />
 
                 <TextView
                     android:id="@+id/dadphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_toEndOf="@id/ivContactItem4"
                     android:layout_toRightOf="@id/ivContactItem4"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:text="dad phone"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/main2"
-                    android:layout_centerInParent="true"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/material_grey_700"/>
 
             </RelativeLayout>
-        </LinearLayout>
-    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
 
-    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        style="@style/ms9_DefaultShadowStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ms9_shadowTranslationZ="2dp"
-        app:ms9_shadowElevation="4dp">
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shadow"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_height="2dp"
+            android:background="@color/material_grey_200"
+            android:layout_marginLeft="72dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:layout_height="72dp">
 
                 <ImageView
                     android:id="@+id/ivContactItem5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="2dp"
+                    android:padding="16dp"
                     android:src="@drawable/info_mom" />
 
                 <TextView
                     android:id="@+id/momname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_toEndOf="@id/ivContactItem5"
                     android:layout_toRightOf="@id/ivContactItem5"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:text="mom"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/main2"
-                    android:layout_centerInParent="true"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/material_grey_700"/>
 
             </RelativeLayout>
-            <include layout="@layout/item_divider" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/material_grey_200"
+            android:layout_marginLeft="72dp"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:layout_height="72dp">
 
                 <ImageView
                     android:id="@+id/ivContactItem6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:layout_margin="2dp"
+                    android:padding="16dp"
                     android:src="@drawable/info_phone" />
 
                 <TextView
                     android:id="@+id/momphone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:layout_toEndOf="@id/ivContactItem6"
                     android:layout_toRightOf="@id/ivContactItem6"
-                    android:ellipsize="end"
-                    android:maxLines="1"
                     android:text="mom phone"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/main2"
-                    android:layout_centerInParent="true"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="8dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/material_grey_700"/>
 
             </RelativeLayout>
-
-        </LinearLayout>
-    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
-
-    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        style="@style/ms9_DefaultShadowStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ms9_shadowTranslationZ="2dp"
-        app:ms9_shadowElevation="4dp">
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/btnLogout"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="@string/logout"
-                    android:textColor="@color/white"
-                    android:background="@drawable/btn_logout"/>
-            </com.balysv.materialripple.MaterialRippleLayout>
-    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+            </LinearLayout>
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,7 +36,6 @@ public class FragmentNotification extends Fragment implements IconSelectDialog.O
     private SelectedItemView iconSIV;
     private SelectedItemView colorSIV;
     private SelectedItemView textSIV;
-    Button btnSend;
     ThongBao tb;
     AppConfig config;
     private JSONArray myClass;
@@ -79,8 +77,15 @@ public class FragmentNotification extends Fragment implements IconSelectDialog.O
             }
         });
 
-        btnSend = (Button) rootView.findViewById(R.id.btnSend);
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        rootView.findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMainActivity = new Intent(getContext(), MainTeacherActivity.class);
+                startActivity(goToMainActivity);
+            }
+        });
+
+        rootView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(tb.invalid())
@@ -239,7 +244,7 @@ public class FragmentNotification extends Fragment implements IconSelectDialog.O
                     Toast.makeText(getContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
-                    Intent goToNextActivity = new Intent(getContext(), MainTeacherActivity.class);
+                    Intent goToNextActivity = new Intent(getContext(), MainTeacherActivity3.class);
                     startActivity(goToNextActivity);
                 }
             } catch (Exception e) {

@@ -1,7 +1,7 @@
 <?php
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-require(APPPATH.'\libraries\REST_Controller.php');
+require(APPPATH.'/libraries/REST_Controller.php');
 
 class API extends REST_Controller {
     function index_get(){
@@ -82,7 +82,8 @@ class API extends REST_Controller {
                     $data['teacher'] = $teacher[0]->id;
                     $data['term'] = $this->Term->getCurrentTermBySchool($teacher[0]->school);
 					$FCMToken = $this->Core->getFCMToken($data['student']);
-					$this->Core->sendFCM($FCMToken, 'Thông báo từ giáo viên', $data['content'], 1);
+                    if($FCMToken != false)
+					    $this->Core->sendFCM($FCMToken, 'Thông báo từ giáo viên', $data['content'], 1);
                     break;
                 default:
                     break;

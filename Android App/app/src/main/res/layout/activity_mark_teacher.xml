@@ -6,55 +6,6 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="vn.piti.draku.piti.TeacherMarkActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/material_grey_100">
-    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        style="@style/ms9_DefaultShadowStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:ms9_shadowTranslationZ="2dp"
-        app:ms9_shadowElevation="4dp">
-    <RelativeLayout
-        android:id="@+id/actionBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="2dp"
-        android:background="@color/material_red_400" >
-
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textAllCaps="true"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:text="@string/teacher_main_mark"/>
-
-
-        <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/backButton"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            app:mrl_rippleOverlay="true"
-            app:mrl_rippleColor="@android:color/black"
-            app:mrl_rippleRoundedCorners="200dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="15dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/la" />
-        </com.balysv.materialripple.MaterialRippleLayout>
-    </RelativeLayout>
-    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -64,6 +15,4 @@ tools:context="vn.piti.draku.piti.TeacherMarkActivity">
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:layout="@layout/fragment_mark" />
-
-</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

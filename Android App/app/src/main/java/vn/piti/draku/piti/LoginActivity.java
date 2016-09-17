@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -119,7 +118,7 @@ public class LoginActivity extends Activity {
 
                 }
             } catch (Exception e) {
-                Log.d("InputStream", e.getLocalizedMessage());
+                Log.d("InputStream", result);
             }
         }
     }

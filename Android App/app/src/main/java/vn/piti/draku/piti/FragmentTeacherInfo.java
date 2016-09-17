@@ -47,6 +47,7 @@ public class FragmentTeacherInfo  extends DialogFragment {
 
         getDialog().setTitle("Thông tin giáo viên");
         ImageView dismiss = (ImageView) rootView.findViewById(R.id.dismiss);
+        dismiss.setVisibility(View.VISIBLE);
         dismiss.setOnClickListener(new View.OnClickListener() {
 
             @Override

@@ -43,13 +43,6 @@ public class TeacherNotificationActivity extends AppCompatActivity {
         }
         else
             Toast.makeText(getBaseContext(),"Không có kết nối Internet", Toast.LENGTH_LONG).show();
-        findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent goToMainActivity = new Intent(getApplicationContext(), MainTeacherActivity.class);
-                startActivity(goToMainActivity);
-            }
-        });
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {

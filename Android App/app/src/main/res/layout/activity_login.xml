@@ -36,12 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:padding="10dp"
+        android:layout_margin="16dp"
         android:background="@drawable/login_shadow">
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="72dp"
+            android:padding="8dp"
             android:id="@+id/username_pad"
             android:theme="@style/TextLabel">
             <EditText android:id="@+id/username"
@@ -55,7 +55,8 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="72dp"
+            android:padding="8dp"
             android:id="@+id/password_pad"
             android:theme="@style/TextLabel">
             <EditText android:id="@+id/password"
@@ -69,8 +70,8 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:layout_margin="16dp"
             android:textColor="@color/main2"
             android:background="@drawable/btn_login"
             android:text="@string/login_button_login"/>
@@ -91,10 +92,9 @@
         android:orientation="horizontal">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="72dp"
         android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:padding="10dp"
+        android:layout_margin="26dp"
         android:background="@drawable/login_shadow"
         android:weightSum="2">
 
@@ -106,13 +106,15 @@
             android:background="@drawable/btn_login"
             android:text="Demo phụ huynh"
             android:layout_weight="1"
-            android:layout_margin="5dp"/>
+            android:padding="8dp"
+            android:layout_marginRight="4dp"/>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login_teacher_sample"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="@color/main2"
-            android:layout_margin="5dp"
+            android:padding="8dp"
+            android:layout_marginLeft="4dp"
             android:background="@drawable/btn_login"
             android:text="Demo giáo viên"
             android:layout_weight="1"/>

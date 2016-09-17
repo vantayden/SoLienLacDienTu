@@ -1,12 +1,11 @@
 package vn.piti.draku.piti;
 
 import android.app.Activity;
-import android.content.res.Configuration;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -14,16 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.squareup.picasso.Picasso;
-
 import org.json.JSONObject;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainTeacherActivity extends Activity  {
 
-    CircleImageView imageView;
     SessionManager ss;
     AppConfig config;
     boolean doubleBackToExitPressedOnce = false;
@@ -31,10 +24,8 @@ public class MainTeacherActivity extends Activity  {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            super.onBackPressed();
+            return;
         }
 
         this.doubleBackToExitPressedOnce = true;
@@ -60,7 +51,7 @@ public class MainTeacherActivity extends Activity  {
             if(!isConnected())
                 Toast.makeText(getBaseContext(), "Không có kết nối mạng để cập nhật!", Toast.LENGTH_SHORT).show();
             else {
-                setContentView(R.layout.new_activity_main);
+                setContentView(R.layout.new_main2);
                 ImageView teacher_image = (ImageView) findViewById(R.id.student_image);
                 teacher_image.setImageResource(R.drawable.teacher);
                 findView();
@@ -74,20 +65,21 @@ public class MainTeacherActivity extends Activity  {
         TextView title = (TextView) findViewById(R.id.main_menu1);
         title.setText(R.string.teacher_main_notification);
         title = (TextView) findViewById(R.id.main_menu2);
-        title.setText(R.string.teacher_main_mark);
+        title.setText(R.string.teacher_main_profile);
         title = (TextView) findViewById(R.id.main_menu3);
-        title.setText(R.string.teacher_main_schedule);
+        title.setText(R.string.teacher_main_mark);
         title = (TextView) findViewById(R.id.main_menu4);
+        title.setText(R.string.teacher_main_schedule);
+        title = (TextView) findViewById(R.id.main_menu5);
         title.setText(R.string.teacher_main_attendance);
 
         findViewById(R.id.changeTheme).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToAskActivity = new Intent(getApplicationContext(), MainTeacherActivity2.class);
+                Intent goToAskActivity = new Intent(getApplicationContext(), MainTeacherActivity3.class);
                 startActivity(goToAskActivity);
             }
         });
-
         findViewById(R.id.main_mark).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,7 +117,6 @@ public class MainTeacherActivity extends Activity  {
                 startActivity(goToScheduleActivity);
             }
         });
-        imageView = (CircleImageView) findViewById(R.id.student_image);
     }
 
     private class HttpAsyncTask extends AsyncTask<String, Void, String> {
@@ -140,20 +131,13 @@ public class MainTeacherActivity extends Activity  {
             try {
                 JSONObject callbackJson = new JSONObject(result);
                 boolean status = callbackJson.getBoolean("status");
-                if(status == false){
+                if(!status){
                     Toast.makeText(getBaseContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
-                    Intent goToMainActivity = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(goToMainActivity);
-                    ss.logout();
                 } else {
                     ss.setInfo(result);
                     JSONObject teacher = callbackJson.getJSONObject("teacher");
                     TextView student_name = (TextView) findViewById(R.id.student_name);
-                    student_name.setText(teacher.getString("name"));
-                    TextView student_class = (TextView) findViewById(R.id.student_class);
-                    student_class.setText(teacher.getString("type"));
-                    if(!teacher.getString("image").equals(""))
-                        Picasso.with(getBaseContext()).load(config.IMAGE_URL + teacher.getString("image")).into(imageView);
+                    student_name.setText(teacher.getString("name") + " - " + teacher.getString("type"));
                 }
             } catch (Exception e) {
                 Log.d("InputStream", e.getLocalizedMessage());

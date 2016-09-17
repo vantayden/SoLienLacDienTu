@@ -3,7 +3,6 @@ package vn.piti.draku.piti;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -16,9 +15,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

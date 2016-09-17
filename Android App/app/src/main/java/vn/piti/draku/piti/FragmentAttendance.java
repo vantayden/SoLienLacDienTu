@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,8 +27,6 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
     private SelectedItemView iconSIV;
     AppConfig config;
     View rootView;
-    Button btnSend;
-    MaterialShadowContainerView shadow;
     ListView lv;
     JSONArray myClass;
 
@@ -55,8 +50,15 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
             }
         });
 
-        btnSend = (Button) rootView.findViewById(R.id.btnSend);
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        rootView.findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToMainActivity = new Intent(getContext(), MainTeacherActivity.class);
+                startActivity(goToMainActivity);
+            }
+        });
+
+        rootView.findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new HttpAsyncTask().execute(config.ADD_URL);
@@ -132,7 +134,7 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();
-            Intent goToMainActivity = new Intent(getContext(), MainTeacherActivity.class);
+            Intent goToMainActivity = new Intent(getContext(), MainTeacherActivity3.class);
             startActivity(goToMainActivity);
         }
     }
@@ -165,8 +167,6 @@ public class FragmentAttendance extends Fragment implements IconSelectDialog.OnI
             }
             lv = (ListView) rootView.findViewById(R.id.listStudent);
             lv.setVisibility(View.VISIBLE);
-            shadow = (MaterialShadowContainerView) rootView.findViewById(R.id.btnSend_shadow);
-            shadow.setVisibility(View.VISIBLE);
             lv.setAdapter(new CustomAttendanceListAdapter(getContext(), listStudent));
 
         }  catch (Exception e) {

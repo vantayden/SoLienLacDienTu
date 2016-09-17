@@ -1,19 +1,17 @@
 package vn.piti.draku.piti;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -42,13 +40,13 @@ public class TeacherProfileActivity extends AppCompatActivity {
             JSONObject teacher = info.getTeacher();
             TextView teacher_name = (TextView) findViewById(R.id.teacher_name);
             teacher_name.setText(teacher.getString("name"));
-            type_school = (TextView) findViewById(R.id.type_school);
+            type_school = (TextView) findViewById(R.id.teacher_type);
             type_school.setText(teacher.getString("type") + "\n" + teacher.getString("school"));
-            subject = (TextView) findViewById(R.id.subject);
+            subject = (TextView) findViewById(R.id.teacher_subject);
             subject.setText(teacher.getString("subject"));
-            address = (TextView) findViewById(R.id.address);
+            address = (TextView) findViewById(R.id.teacher_address);
             address.setText(teacher.getString("address"));
-            phone = (TextView) findViewById(R.id.phone);
+            phone = (TextView) findViewById(R.id.teacher_phone);
             phone.setText(teacher.getString("phone"));
 
             ImageView imageView = (ImageView) findViewById(R.id.teacher_image);
@@ -58,11 +56,19 @@ public class TeacherProfileActivity extends AppCompatActivity {
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppConfig config = new AppConfig();
-                new HttpAsyncTask().execute(config.LOGOUT_URL);
+                new AlertDialog.Builder(TeacherProfileActivity.this)
+                        .setTitle("Xác nhận")
+                        .setMessage("Bạn có muốn Đăng xuất?")
+                        .setPositiveButton("Đăng xuất", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                AppConfig config = new AppConfig();
+                                new HttpAsyncTask().execute(config.LOGOUT_URL);
+                            }})
+                        .setNegativeButton("Hủy", null).show();
 
             }
         });

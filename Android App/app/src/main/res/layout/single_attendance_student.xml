@@ -8,16 +8,18 @@
         <RelativeLayout
             android:id="@+id/changeStatus"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="72dp">
             <TextView
                 android:id="@+id/student"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/main5"
+                android:textColor="@color/material_brown_400"
                 android:typeface="sans"
                 android:text="Student"
-                android:paddingLeft="10dp"
-                android:gravity="center_vertical"
+                android:gravity="bottom"
+                android:paddingLeft="16dp"
+                android:paddingBottom="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_alignParentLeft="true"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -25,20 +27,20 @@
                 android:id="@+id/reason"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/main4"
+                android:textColor="@color/material_brown_300"
                 android:layout_toLeftOf="@+id/checkattendance"
                 android:typeface="sans"
-                android:paddingRight="10dp"
-                android:gravity="center_vertical"
+                android:layout_alignBaseline="@+id/student"
+                android:paddingRight="16dp"
                 android:visibility="invisible"
                 android:textSize="15sp"/>
             <CheckBox
                 android:id="@+id/checkattendance"
                 android:checked="true"
                 android:layout_alignParentRight="true"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:padding="8dp"
+                android:layout_margin="2dp"/>
         </RelativeLayout>
 </LinearLayout>

@@ -31,7 +31,7 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 app:mrl_rippleOverlay="true"
-                app:mrl_rippleColor="@android:color/black"
+                app:mrl_rippleColor="@color/material_grey_500"
                 app:mrl_rippleRoundedCorners="200dp">
                 <ImageView
                     android:layout_width="match_parent"

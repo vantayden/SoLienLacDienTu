@@ -1,21 +1,17 @@
 package vn.piti.draku.piti;
 
-import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -67,11 +63,19 @@ public class ParentStudentActivity extends AppCompatActivity {
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        findViewById(R.id.btnLogout).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppConfig config = new AppConfig();
-                new HttpAsyncTask().execute(config.LOGOUT_URL);
+                new AlertDialog.Builder(ParentStudentActivity.this)
+                        .setTitle("Xác nhận")
+                        .setMessage("Bạn có muốn Đăng xuất?")
+                        .setPositiveButton("Đăng xuất", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                AppConfig config = new AppConfig();
+                                new HttpAsyncTask().execute(config.LOGOUT_URL);
+                            }})
+                        .setNegativeButton("Hủy", null).show();
             }
         });
     }

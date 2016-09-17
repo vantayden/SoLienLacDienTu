@@ -21,7 +21,7 @@
             android:layout_marginBottom="2dp"
             android:background="@color/main2"
             app:mrl_rippleOverlay="true"
-            app:mrl_rippleColor="@android:color/black">
+            app:mrl_rippleColor="@color/material_grey_500">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="90dp">
@@ -57,7 +57,7 @@
                 android:id="@+id/changeTheme"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/reload"
+                android:src="@drawable/change"
                 android:padding="10dp"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
@@ -97,7 +97,7 @@
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/shadow"
                 app:mrl_rippleOverlay="true"
-                app:mrl_rippleColor="@android:color/black">
+                app:mrl_rippleColor="@color/material_grey_500">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -159,7 +159,7 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/shadow"
                         app:mrl_rippleOverlay="true"
-                        app:mrl_rippleColor="@android:color/black">
+                        app:mrl_rippleColor="@color/material_grey_500">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -226,7 +226,7 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/shadow"
                         app:mrl_rippleOverlay="true"
-                        app:mrl_rippleColor="@android:color/black">
+                        app:mrl_rippleColor="@color/material_grey_500">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -288,7 +288,7 @@
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/shadow"
                         app:mrl_rippleOverlay="true"
-                        app:mrl_rippleColor="@android:color/black">
+                        app:mrl_rippleColor="@color/material_grey_500">
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">

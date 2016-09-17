@@ -248,8 +248,13 @@ class Core extends CI_Model{
 
     function getFCMToken($student){
         $user = $this->get('user', array('user' => $student, 'type' => '2'))->result();
-        $session = $this->get('session', array('user' => $user[0]->id))->result();
-        return $session[0]->FCMToken;
+        $session = $this->get('session', array('user' => $user[0]->id));
+        if($session->num_rows() == 0)
+            return false;
+        else {
+            $session = $session->result();
+            return $session[0]->FCMToken;
+        }
     }
 
     function sendFCM($token, $title, $message, $type){

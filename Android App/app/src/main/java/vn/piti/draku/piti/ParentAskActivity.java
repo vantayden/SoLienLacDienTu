@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,14 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
-
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
 import org.json.JSONObject;
 import java.text.SimpleDateFormat;
@@ -33,8 +27,6 @@ public class ParentAskActivity extends Activity implements View.OnClickListener 
     AppConfig config;
     private EditText askReason;
     private EditText date;
-    private ImageView back;
-    private Button btnSend;
     private ProgressDialog progressDialog;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -56,7 +48,6 @@ public class ParentAskActivity extends Activity implements View.OnClickListener 
         date = (EditText) findViewById(R.id.date);
         date .setInputType(InputType.TYPE_NULL);
         date .requestFocus();
-        btnSend = (Button) findViewById(R.id.btnSend);
     }
     private void setDateTimeField() {
         date.setOnClickListener(this);
@@ -80,7 +71,7 @@ public class ParentAskActivity extends Activity implements View.OnClickListener 
             }
         });
 
-        btnSend.setOnClickListener(new View.OnClickListener(){
+        findViewById(R.id.sendButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 progressDialog = new ProgressDialog(ParentAskActivity.this);
@@ -127,7 +118,7 @@ public class ParentAskActivity extends Activity implements View.OnClickListener 
                     Toast.makeText(getBaseContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getBaseContext(), callbackJson.getString("message"), Toast.LENGTH_LONG).show();
-                    Intent goToNextActivity = new Intent(getApplicationContext(), MainParentActivity.class);
+                    Intent goToNextActivity = new Intent(getApplicationContext(), MainParentActivity3.class);
                     startActivity(goToNextActivity);
                 }
             } catch (Exception e) {
