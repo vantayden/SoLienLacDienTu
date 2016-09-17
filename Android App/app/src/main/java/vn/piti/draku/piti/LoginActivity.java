@@ -13,7 +13,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONObject;
-import vn.piti.draku.piti.DoiTuong.User;
+import vn.piti.draku.piti.Objects.User;
+import vn.piti.draku.piti.Parent.MainParentActivity;
+import vn.piti.draku.piti.Teacher.MainTeacherActivity;
+import vn.piti.draku.piti.Tools.DoPost;
+import vn.piti.draku.piti.Tools.SessionManager;
 
 public class LoginActivity extends Activity {
     ProgressDialog progress;
@@ -30,7 +34,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.login_activity);
         progress = new ProgressDialog(this);
         progress.setMessage("Đang đăng nhập...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);

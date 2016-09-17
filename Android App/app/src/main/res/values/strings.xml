@@ -18,7 +18,7 @@
     <string name="login_button_login">Đăng nhập</string>
     <string name="logout">Đăng xuất</string>
 
-    <string name="copyright">© UET 2016</string>
+    <string name="copyright">Version 1.2.1 - © UET 2016</string>
 
     <string name="icon_hint">Icon</string>
     <string name="color_hint">Color</string>
@@ -31,4 +31,7 @@
     <string-array name="teacher_array">
         <item>Xem thông tin giáo viên</item>
     </string-array>
+    <string name="hs1">Hệ số \n1</string>
+    <string name="hs2">Hệ số \n2</string>
+    <string name="hs3">Hệ số \n3</string>
 </resources>

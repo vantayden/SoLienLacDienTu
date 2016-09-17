@@ -102,7 +102,7 @@ class Core extends CI_Model{
         $mom = $this->get('parent', array('id' => $student[0]->mom))->result();
         //$schedule = $this->Schedule->getScheduleByClass($student[0]->class);
         $schedule = $this->Schedule->getNewScheduleByClass($student[0]->class);
-        $mark = $this->Mark->getMarkOfStudent($student[0]->id);
+        $mark = $this->Mark->getNewMarkOfStudent($student[0]->id);
         $callback = array(
             'status' => true,
             'message' => sprintf($this->lang->line('got_successful'), $this->lang->line('student')),

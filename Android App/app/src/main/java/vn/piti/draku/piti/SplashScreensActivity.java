@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
+import vn.piti.draku.piti.Parent.MainParentActivity;
+import vn.piti.draku.piti.Teacher.MainTeacherActivity;
+import vn.piti.draku.piti.Tools.SessionManager;
+
 
 public class SplashScreensActivity extends Activity {
     SessionManager ss;
@@ -18,7 +22,7 @@ public class SplashScreensActivity extends Activity {
         ss = new SessionManager(getBaseContext());
         super.onCreate(savedInstanceState);
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.splash_activity);
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Intent goToNextActivity;

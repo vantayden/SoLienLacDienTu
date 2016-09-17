@@ -38,6 +38,37 @@ class Mark extends CI_Model
         return $mark;
     }
 
+    function getNewMarkOfStudent($student){
+        $this->load->model('Teacher');
+
+        $student = $this->Core->get('student', array('id'=>$student))->result();
+        $teachers = $this->Teacher->getTeacherOfClass($student[0]->class);
+
+        $mark = array();
+        foreach($teachers as $teacher){
+            $tea = $this->Core->get('teacher', array('id'=>$teacher->teacher))->result();
+            $subject = $this->Core->get('subject', array('id' => $tea[0]->subject))->result();
+            $ma = array();
+            $ma['name'] = $subject[0]->sort_name;
+            $ma['teacher'] = $teacher->teacher;
+            $ma['hs1'] = array();
+            $ma['hs2'] = array();
+            $ma['hs3'] = array();
+
+            $marks = $this->getMarkByStudentAndTeacher($tea[0]->id, $student[0]->id);
+            if($marks->num_rows() > 0){
+                $marks = $marks->result();
+                foreach($marks as $m){
+                    $mn['mark']  = $m->mark;
+                    $ma['hs'.$m->type][] = $mn;
+                }
+            }
+            $mark[] = $ma;
+        }
+
+        return $mark;
+    }
+
     function getMarkByStudentAndTeacher($teacher, $student){
         $this->load->model('Term');
 

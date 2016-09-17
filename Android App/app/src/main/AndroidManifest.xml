@@ -24,24 +24,24 @@
 
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".MainParentActivity"/>
-        <activity android:name=".MainParentActivity3"/>
-        <activity android:name=".ParentNotificationActivity"/>
-        <activity android:name=".ParentStudentActivity"/>
-        <activity android:name=".ParentMarkActivity"/>
-        <activity android:name=".ParentScheduleActivity"/>
-        <activity android:name=".ParentAskActivity"/>
+        <activity android:name=".Parent.MainParentActivity"/>
+        <activity android:name=".Parent.MainParentActivity3"/>
+        <activity android:name=".Parent.ParentNotificationActivity"/>
+        <activity android:name=".Parent.ParentStudentActivity"/>
+        <activity android:name=".Parent.ParentMarkActivity"/>
+        <activity android:name=".Parent.ParentScheduleActivity"/>
+        <activity android:name=".Parent.ParentAskActivity"/>
 
-        <activity android:name=".MainTeacherActivity"/>
-        <activity android:name=".MainTeacherActivity3"/>
-        <activity android:name=".TeacherProfileActivity"/>
-        <activity android:name=".TeacherScheduleActivity"/>
-        <activity android:name=".TeacherNotificationActivity"/>
-        <activity android:name=".TeacherAttendanceActivity"/>
-        <activity android:name=".TeacherMarkActivity"/>
+        <activity android:name=".Teacher.MainTeacherActivity"/>
+        <activity android:name=".Teacher.MainTeacherActivity3"/>
+        <activity android:name=".Teacher.TeacherProfileActivity"/>
+        <activity android:name=".Teacher.TeacherScheduleActivity"/>
+        <activity android:name=".Teacher.TeacherNotificationActivity"/>
+        <activity android:name=".Teacher.TeacherAttendanceActivity"/>
+        <activity android:name=".Teacher.TeacherMarkActivity"/>
         <!-- [START firebase_service] -->
         <service
-            android:name=".MyFirebaseMessagingService">
+            android:name=".Firebase.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
@@ -49,7 +49,7 @@
         <!-- [END firebase_service] -->
         <!-- [START firebase_iid_service] -->
         <service
-            android:name=".MyFirebaseInstanceIDService">
+            android:name=".Firebase.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>

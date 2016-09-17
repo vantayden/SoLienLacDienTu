@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/material_grey_100"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        style="@style/ms9_DefaultShadowStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms9_shadowTranslationZ="2dp"
+        app:ms9_shadowElevation="4dp">
+        <RelativeLayout
+            android:id="@+id/actionBar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/material_red_400" >
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="72dp"
+                android:layout_marginBottom="16dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/parent_main_mark"/>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/backButton"
+                android:layout_width="52dp"
+                android:layout_margin="2dp"
+                android:layout_height="match_parent"
+                app:mrl_rippleOverlay="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                app:mrl_rippleColor="@color/material_grey_500"
+                app:mrl_rippleRoundedCorners="200dp"
+                >
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="14dp"
+                    android:src="@drawable/la" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </RelativeLayout>
+    </com.h6ah4i.android.materialshadowninepatch.MaterialShadowContainerView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/shadow">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Hệ số 0"
+                    android:textColor="@color/white"
+                    android:background="@drawable/border_blank"/>
+                <TextView
+                    android:id="@+id/hs1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="@string/hs1"
+                    android:gravity="center"
+                    android:background="@drawable/border_blank"/>
+                <TextView
+                    android:id="@+id/hs2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="@string/hs2"
+                    android:gravity="center"
+                    android:background="@drawable/border_blank"/>
+                <TextView
+                    android:id="@+id/hs3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/hs3"
+                    android:gravity="center"
+                    android:background="@drawable/border_blank"/>
+                <TextView
+                    android:id="@+id/tb"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="TB"
+                    android:gravity="center"
+                    android:background="@drawable/border_blank"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/material_grey_500" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/table_mark"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+
+                </TableLayout>
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
